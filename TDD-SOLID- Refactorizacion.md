@@ -1,4 +1,4 @@
-# SRP (principio de responsabilidad única): bloques de construcción simples
+![image](https://github.com/MarceloLZR/SOFTWARE-NUEVO-GRUPO/assets/135175818/b9d9e07e-e104-4333-9135-10175311d2c0)# SRP (principio de responsabilidad única): bloques de construcción simples
 SRP nos guía para dividir el código en partes que encapsulen un solo aspecto de la solución. 
 
 ![image](https://github.com/MarceloLZR/SOFTWARE-NUEVO-GRUPO/assets/135175818/728c61da-57cb-4f45-ac79-ded47df88d00)
@@ -27,8 +27,6 @@ El código que solía estar en los bloques de declaraciones cases  se ha movido 
 ![image](https://github.com/MarceloLZR/SOFTWARE-NUEVO-GRUPO/assets/135175818/989394cd-6b72-418d-860c-dcde28013798)
 
 Podemos ver como la clase Rectangle ahora tiene la única responsabilidad de saber dibujar un rectángulo.
-
-# DIP (Principio de inversión de dependencia): ocultar detalles irrelevantes  
 
 
 

@@ -1,4 +1,4 @@
-package DIP;
+package OCP;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -60,7 +60,7 @@ Al aplicar el DIP, conseguimos que las 3 clases dependan de la interfaz y evitam
 ![image](https://github.com/MarceloLZR/SOFTWARE-NUEVO-GRUPO/assets/153737279/cf371cd3-68ec-45da-acb0-044f4c17e7cc)
 
 
-
+# ISP(Principio de segregación de interfaz): interfaces efectivas 
 
 
 

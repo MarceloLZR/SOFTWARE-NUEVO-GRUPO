@@ -1,4 +1,5 @@
-![image](https://github.com/MarceloLZR/SOFTWARE-NUEVO-GRUPO/assets/135175818/b9d9e07e-e104-4333-9135-10175311d2c0)# SRP (principio de responsabilidad única): bloques de construcción simples
+
+# SRP (principio de responsabilidad única): bloques de construcción simples
 SRP nos guía para dividir el código en partes que encapsulen un solo aspecto de la solución. 
 
 ![image](https://github.com/MarceloLZR/SOFTWARE-NUEVO-GRUPO/assets/135175818/728c61da-57cb-4f45-ac79-ded47df88d00)

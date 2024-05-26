@@ -33,27 +33,32 @@ Podemos ver como la clase Rectangle ahora tiene la única responsabilidad de sab
 
 El principio de inversión de dependencia (DIP) establece que debemos escribir código que dependa de abstracciones y no de detalles específicos. En este ejemplo Shapes depende de cambios en las formas TextBox y Rectangle
 
-![alt text](image-1.png)
+![image](https://github.com/MarceloLZR/SOFTWARE-NUEVO-GRUPO/assets/153737279/d0f8e907-29be-4d94-bea9-34b887c8f549)
+
 
 ## Contraejemplo: Código que viola el DIP
 
-![alt text](image-2.png)
+![image](https://github.com/MarceloLZR/SOFTWARE-NUEVO-GRUPO/assets/153737279/e920be8d-0d30-4189-bd25-036f72ca923f)
+
 
 En el diagrama UML, se observan las dependencias de ambas clases con la clase `Shapes`, debido al método `DRAW`. La condicional `SWITCH` depende del tipo de shape, creando una fuerte dependencia entre las clases.
 
 ## Aplicación del DIP
 
-![alt text](image-3.png)
+![image](https://github.com/MarceloLZR/SOFTWARE-NUEVO-GRUPO/assets/153737279/bd1f3b0f-6805-49d2-a004-edac52f0e251)
+
 
 Aplicamos el DIP eliminando las dependencias entre clases mediante la refactorización del método `DRAW`, de modo que dependa de la interfaz `Shape`.
 
-![alt text](image-4.png)
+![image](https://github.com/MarceloLZR/SOFTWARE-NUEVO-GRUPO/assets/153737279/0c6c0683-bb55-4d40-b00b-e73ea6c22a60)
+
 
 Además, se realizó un pequeño cambio que mejora el orden y la legibilidad del código.
 
 Al aplicar el DIP, conseguimos que las 3 clases dependan de la interfaz y evitamos que los bloques de código dependan unos de otros. Esto se ejemplifica en la siguiente imagen:
 
-![alt text](image.png)
+![image](https://github.com/MarceloLZR/SOFTWARE-NUEVO-GRUPO/assets/153737279/cf371cd3-68ec-45da-acb0-044f4c17e7cc)
+
 
 
 

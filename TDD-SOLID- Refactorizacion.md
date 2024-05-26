@@ -29,6 +29,33 @@ El código que solía estar en los bloques de declaraciones cases  se ha movido 
 
 Podemos ver como la clase Rectangle ahora tiene la única responsabilidad de saber dibujar un rectángulo.
 
+# DIP (Principio de Inversión de Dependencia): Ocultar detalles irrelevantes
+
+El principio de inversión de dependencia (DIP) establece que debemos escribir código que dependa de abstracciones y no de detalles específicos. En este ejemplo Shapes depende de cambios en las formas TextBox y Rectangle
+
+![alt text](image-1.png)
+
+## Contraejemplo: Código que viola el DIP
+
+![alt text](image-2.png)
+
+En el diagrama UML, se observan las dependencias de ambas clases con la clase `Shapes`, debido al método `DRAW`. La condicional `SWITCH` depende del tipo de shape, creando una fuerte dependencia entre las clases.
+
+## Aplicación del DIP
+
+![alt text](image-3.png)
+
+Aplicamos el DIP eliminando las dependencias entre clases mediante la refactorización del método `DRAW`, de modo que dependa de la interfaz `Shape`.
+
+![alt text](image-4.png)
+
+Además, se realizó un pequeño cambio que mejora el orden y la legibilidad del código.
+
+Al aplicar el DIP, conseguimos que las 3 clases dependan de la interfaz y evitamos que los bloques de código dependan unos de otros. Esto se ejemplifica en la siguiente imagen:
+
+![alt text](image.png)
+
+
 
 
 

@@ -51,7 +51,7 @@ Decidimos lo siguiente:
   - La firma del constructor de la clase.
     
     La firma del constructor de la clase Word es:
-     ```
+     ```java
     public Word(String word):
       ```
   - Qué otros objetos deberían colaborar
@@ -61,7 +61,7 @@ Decidimos lo siguiente:
   - Las firmas de métodos involucradas en esa colaboración.
 
     La firma del método en la clase Score para acceder a la letra es public Letter letter(int index):
-     ```
+     ```java
     public Letter letter(int index)
       ```
   - ¿Qué forma tomará el resultado de este método?

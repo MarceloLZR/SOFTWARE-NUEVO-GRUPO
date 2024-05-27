@@ -70,7 +70,7 @@ Decidimos lo siguiente:
   - ¿ Cómo acceder a esa salida y aseverar que funciona?
 
     Accedemos al resultado usando el método letter(int index) de la clase Score y usamos una aserción para verificar que el estado de la letra es Letter.INCORRECT.
-
+ gradle -v
 Todas estas son decisiones de diseño que se debe tomar. TDD nos deja muy involucrados cuando se
 trata de diseñar el código y decidir cómo debe implementarse. Diseñar es gratificante y TDD
 proporciona un andamiaje útil en lugar de un enfoque prescriptivo. TDD actúa como una guía para
@@ -1095,10 +1095,16 @@ public interface Shape {
 
 **Tareas:**
   - Divide la interfaz Shape si es necesario para que cada interfaz tenga una única responsabilidad.
+    TextGraphics
     ```java
-    public interface Shape {
-    void drawText(TextGraphics g);
-    void drawLine(LineGraphics g);
+    public interface TextGraphics {
+    void drawText(String text);
+    }
+    ```
+    LineGraphics
+    ```java
+    public interface LineGraphics {
+    void drawHorizontalLine(int width);
     }
     ```
   - Si la interfaz Shape crece demasiado, considera dividirla en múltiples interfaces más pequeñas.

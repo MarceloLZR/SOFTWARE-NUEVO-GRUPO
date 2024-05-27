@@ -1065,15 +1065,14 @@ public interface Shape {
 
 **Tareas:**
   - Divide la interfaz Shape si es necesario para que cada interfaz tenga una única responsabilidad.
+    ```java
+    public interface Shape {
+    void drawText(TextGraphics g);
+    void drawLine(LineGraphics g);
+    }
+    ```
   - Si la interfaz Shape crece demasiado, considera dividirla en múltiples interfaces más pequeñas.
 
-### Código Inicial:
-
-```java
-public interface Shape {
- void draw(Graphics g);
-}
-```
 
 ## Ejercicio 5: Refactorizando para Mejorar el Diseño y Pruebas
 

@@ -31,15 +31,45 @@ assertThat( score.letter(0) ).isEqualTo(Letter.INCORRECT);
 
 Decidimos lo siguiente:
   - ¿Qué probar?
+    
+    Decidimos probar la funcionalidad de adivinanza de una palabra y verificar que una letra incorrecta se marque como incorrecta.
   - ¿ Cómo llamar a la prueba?
+
+    Nombramos la prueba oneIncorrectLetter para indicar claramente que estamos probando el caso de una letra incorrecta.
   - ¿ Cómo llamar al método bajo prueba?
+
+    Llamamos al método guess porque su propósito es adivinar letras de una palabra.
   - ¿ En qué clase poner ese método ?
+
+    Decidimos poner el método guess en la clase Word, ya que la funcionalidad de adivinanza es inherentemente parte de la representación de una palabra.
   - La firma de ese método
+
+    La firma del método guess es public Score guess(String guess):
+    ```java
+    public Score guess(String guess)
+    ```
   - La firma del constructor de la clase.
+    
+    La firma del constructor de la clase Word es:
+     ```
+    public Word(String word):
+      ```
   - Qué otros objetos deberían colaborar
+
+    Identificamos que necesitamos una clase Score para representar el resultado de la adivinanza.
+    También identificamos que necesitamos una clase Letter para representar el estado de cada letra adivinada.
   - Las firmas de métodos involucradas en esa colaboración.
+
+    La firma del método en la clase Score para acceder a la letra es public Letter letter(int index):
+     ```
+    public Letter letter(int index)
+      ```
   - ¿Qué forma tomará el resultado de este método?
+
+    El resultado del método guess será una instancia de la clase Score que contiene la evaluación de cada letra adivinada.
   - ¿ Cómo acceder a esa salida y aseverar que funciona?
+
+    Accedemos al resultado usando el método letter(int index) de la clase Score y usamos una aserción para verificar que el estado de la letra es Letter.INCORRECT.
 
 Todas estas son decisiones de diseño que se debe tomar. TDD nos deja muy involucrados cuando se
 trata de diseñar el código y decidir cómo debe implementarse. Diseñar es gratificante y TDD

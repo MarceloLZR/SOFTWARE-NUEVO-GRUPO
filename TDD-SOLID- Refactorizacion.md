@@ -795,19 +795,98 @@ public class Shapes {
 }
 ```
 
-** Tareas: **
+**Tareas:**
 
   - Crea clases separadas para TextBox y Rectangle, cada una con su propia responsabilidad de dibujar.
+
+    **TextBox**
+    
+    ```java
+    public class TextBox implements Shape {
+    private final String text;
+
+    public TextBox(String text) {
+        this.text = text;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    @Override
+    public String getType() {
+        return "textbox";
+    }
+
+    public void draw(Graphics g) {
+        g.drawText(text);
+    }
+    }
+
+    ```
+    
+    **Rectangle**
+    
+    ```java
+    public class Rectangle implements Shape {
+    private final int width;
+    private final int height;
+
+    public Rectangle(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    @Override
+    public String getType() {
+        return "rectangle";
+    }
+
+    public void draw(Graphics g) {
+        for (int row = 0; row < height; row++) {
+            g.drawLine(0, row, width, row);
+        }
+    }
+    }
+    ```
+    
   - Refactoriza Shapes para delegar el dibujo a estas clases.
+    ```java
+    public class Shapes {
+    private final List<Shape> allShapes = new ArrayList<>();
+
+    public void add(Shape s) {
+        allShapes.add(s);
+    }
+
+    public void draw(Graphics g) {
+        for (Shape s : allShapes) {
+            switch (s.getType()) {
+                case "textbox":
+                    var t = (TextBox) s;
+                    t.draw(g);
+                    break;
+
+                case "rectangle":
+                    var r = (Rectangle) s;
+                    r.draw(g);
+            }
+        }
+        }
+    }
+    ```
 
 ## Ejercicio 2: Aplicando OCP y DIP
 
 Modifica la clase **Shapes** para que sea abierta a la extensión pero cerrada a la modificación.
-
-**Tareas:**
-  - Define una interfaz Shape con un método draw(Graphics g).
-  - Haz que TextBox y Rectangle implementen esta interfaz.
-  - Refactoriza Shapes para que dependa de la abstracción Shape en lugar de las clases concretas.
 
 ### Código inicial
 
@@ -841,15 +920,109 @@ public Rectangle(int width, int height) {
 }
 ```
 
+**Tareas:**
+  - Define una interfaz Shape con un método draw(Graphics g).
+    ```java
+    public class Shapes {
+    private final List<Shape> allShapes = new ArrayList<>();
+    private final Graphics graphics;
+    public Shapes(Graphics graphics) {
+
+        this.graphics = graphics;
+    }
+    public void add(Shape s) {
+
+        allShapes.add(s);
+    }
+
+    public void draw() {
+        allShapes.forEach(shape->shape.draw(graphics));
+    }
+    }
+    ```
+  - Haz que TextBox y Rectangle implementen esta interfaz.
+
+    **TextBox**
+    
+    ```java
+    public class TextBox implements Shape {
+    private final String text;
+
+    public TextBox(String text) {
+        this.text = text;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    @Override
+    public String getType() {
+        return "textbox";
+    }
+
+    public void draw(Graphics g) {
+        g.drawText(text);
+    }
+    }
+    ```
+    
+    **Rectangle**
+    
+    ```java
+    public class Rectangle implements Shape {
+    private final int width;
+    private final int height;
+
+    public Rectangle(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    @Override
+    public String getType() {
+        return "rectangle";
+    }
+
+    public void draw(Graphics g) {
+        for (int row = 0; row < height; row++) {
+            g.drawLine(0, row, width, row);
+        }
+    }
+    }
+    ```
+  - Refactoriza Shapes para que dependa de la abstracción Shape en lugar de las clases concretas.
+    ```java
+    public class Shapes {
+    private final List<Shape> allShapes = new ArrayList<>();
+    private final Graphics graphics;
+    public Shapes(Graphics graphics) {
+
+        this.graphics = graphics;
+    }
+    public void add(Shape s) {
+
+        allShapes.add(s);
+    }
+
+    public void draw() {
+        allShapes.forEach(shape->shape.draw(graphics));
+    }
+    }
+    ```
+
 ## Ejercicio 3 : Aplicando LSP
 
 Asegúrate de que cualquier implementación de Shape pueda sustituir a otra sin alterar el
 comportamiento esperado.
-
-**Tareas:**
-
-  - Añade una nueva clase Circle que implemente Shape.
-  - Asegúrate de que Circle respete LSP y pueda sustituir a Rectangle y TextBox sin problemas.
 
 ### Código inicial:
 
@@ -866,9 +1039,29 @@ public class Circle implements Shape {
 }
 ```
 
+**Tareas:**
+
+  - Añade una nueva clase Circle que implemente Shape.
+    ```java
+    
+    ```
+  - Asegúrate de que Circle respete LSP y pueda sustituir a Rectangle y TextBox sin problemas.
+    ```java
+    
+    ```
+
+
 ## Ejercicio 4: Aplicando ISP
 
 Refactoriza las interfaces para asegurarte de que sean pequeñas y específicas.
+
+### Código Inicial:
+
+```java
+public interface Shape {
+ void draw(Graphics g);
+}
+```
 
 **Tareas:**
   - Divide la interfaz Shape si es necesario para que cada interfaz tenga una única responsabilidad.
@@ -887,11 +1080,6 @@ public interface Shape {
 Refactoriza la clase Shapes y su método draw para mejorar la legibilidad y facilitar las pruebas
 unitarias.
 
-**Tareas:**
-
-  - Introduce el uso de un patrón de diseño como el Strategy Pattern para manejar el dibujo de diferentes tipos de formas.
-  - Escribe pruebas unitarias para cada clase de forma para asegurarte de que se dibujen correctamente.
-
 ### Código Inicial:
 ```java
 public class Shapes {
@@ -906,6 +1094,13 @@ public class Shapes {
 }
 }
 ```
+
+**Tareas:**
+
+  - Introduce el uso de un patrón de diseño como el Strategy Pattern para manejar el dibujo de diferentes tipos de formas.
+  - Escribe pruebas unitarias para cada clase de forma para asegurarte de que se dibujen correctamente.
+
+
 ## Ejercicio 6: Aplicando LSP y refactorizando MaliciousShape
 
 La clase **MaliciousShape** implementa la interfaz Shape, pero su comportamiento es claramente
@@ -932,15 +1127,15 @@ public class MaliciousShape implements Shape {
 
 Identificar la Violación de LSP:
 
-  - Explica por qué MaliciousShape viola el principio de sustitución de Liskov.
-  - Analiza el comportamiento esperado de las implementaciones de Shape.
+  - **Explica por qué MaliciousShape viola el principio de sustitución de Liskov.**
+    
+  - **Analiza el comportamiento esperado de las implementaciones de Shape.**
+    
 
 Refactorizar el Diseño:
 
-- Introduce validaciones adicionales en el método draw de la interfaz Shape para prevenir
-comportamientos inesperados.
-- Asegúrate de que las clases que implementan Shape proporcionen un comportamiento
-seguro y esperado.
+  - Introduce validaciones adicionales en el método draw de la interfaz Shape para prevenir comportamientos inesperados.
+  - Asegúrate de que las clases que implementan Shape proporcionen un comportamiento seguro y esperado.
 
 Crear una clase de prueba:
 

@@ -1095,13 +1095,15 @@ public interface Shape {
 
 **Tareas:**
   - Divide la interfaz Shape si es necesario para que cada interfaz tenga una única responsabilidad.
-    TextGraphics
+
+     TextGraphics
     ```java
     public interface TextGraphics {
     void drawText(String text);
     }
     ```
-    LineGraphics
+
+     LineGraphics
     ```java
     public interface LineGraphics {
     void drawHorizontalLine(int width);
